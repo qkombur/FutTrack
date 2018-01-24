@@ -14,7 +14,7 @@
         <p class="feature-body">I didn't curate all of this data myself, <a href="http://www.football-data.org">footballdata.org</a> did all the heavy lifting for me and provided a great API to make calls with.</p>
       </div>
       <div class="feature">
-        <h2 class="feature-header">GitGub</h2>
+        <h2 class="feature-header">Github</h2>
         <p class="feature-body">If you're the type of person who wants to read source code. All of my projects are<a href="https://www.github.com/qkombur/FutTrack"> open source</a> </p>
       </div>
     </div>
