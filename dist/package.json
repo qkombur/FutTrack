@@ -1,0 +1,10 @@
+{
+    "name": "FutTrack",
+    "version": "1.0.0",
+    "description": "A Football fixture tracker",
+    "author": "Nicholas Auger",
+    "private": true,
+    "scripts": {
+      "postinstall": "npm install express"
+    }
+   }
