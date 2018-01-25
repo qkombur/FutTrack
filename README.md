@@ -1,6 +1,6 @@
 # futtrack
 
-> A Vue.js project
+> As a soccer fan I wanted a quick overview of all the upcoming matches for a few leagues I try to follow. I decided to develop a website that would show me all the upcoming games on a single page. I used an open source API called football-data.org and VueJs as my framework to digest this information and display the matches for the day. I also implemented a search feature to narrow down the results by team. The site is deployed on heroku.
 
 ## Build Setup
 
@@ -22,13 +22,15 @@ npm run unit
 
 # run all tests
 npm test
+
+# deploy to heroku
+npm run deploy
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 
-### Feature List
+### Planned updates
 
-* Show a user defined amount of games for all PL games
-* favorite team games for reload
-* add to calendar (hard maybe)
+* Show a user defined amount of games for all PL games.
+* Write unit tests
