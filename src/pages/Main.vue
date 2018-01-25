@@ -7,7 +7,7 @@
     <div class="feature-container">
       <div class="feature">
         <h2 class="feature-header">Vue</h2>
-        <p class="feature-body">All of the front end of this website is Vue. I don't have a strong opinion about frameworks but I really liked the way Vue handles components and wasn't a fan of JSX.</p>
+        <p class="feature-body">All of the front end of this website is Vue. I don't have a strong opinion about frameworks, I just like Vue.</p>
       </div>
       <div class="feature">
         <h2 class="feature-header">football-data.org</h2>
@@ -15,7 +15,7 @@
       </div>
       <div class="feature">
         <h2 class="feature-header">Github</h2>
-        <p class="feature-body">If you're the type of person who wants to read source code. All of my projects are<a href="https://www.github.com/qkombur/FutTrack"> open source</a> </p>
+        <p class="feature-body">If you're the type of person who wants to read source code. All of my projects are <a href="https://www.github.com/qkombur/FutTrack">open source</a> </p>
       </div>
     </div>
   </div>
@@ -54,7 +54,10 @@ h2 {
   font-size: 1.625rem;
   text-align: center;
 }
-
+a {
+  color: #f4f4f4;
+  text-decoration: underline;
+}
 p {
   color: #f4f4f4;
   font-size: 1em;
