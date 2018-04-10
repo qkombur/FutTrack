@@ -21,7 +21,6 @@
 
         <div v-else class="card">
           <div class="left">
-
               <h2 class="teamName">{{ fixture.homeTeamName }}</h2>
 
             <h2 class="versus">vs</h2>
@@ -37,6 +36,13 @@
 </template>
 
 <script>
+import Axios from 'axios'
+
+const config = {
+  headers: {
+    'X-Auth-Token': '651c36e10a3640f598f529d5a2868ec2'
+  }
+}
 
 export default {
   name: 'FixtureCard',
@@ -51,13 +57,18 @@ export default {
   data () {
     return {
       formatedDate: '',
-      search: ''
+      search: '',
+      teamIcon: []
     }
   },
-
+  created () {
+  },
   methods: {
-    getIcon: function (url) {
-
+    getIcon: function (value) {
+      Axios.get(value, config)
+      .then(response => {
+        this.teamIcon = response.data.crestUrl
+      })
     }
   },
 

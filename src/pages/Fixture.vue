@@ -24,12 +24,14 @@ export default {
     return {
       fixtures: [],
       formatedDate: '',
-      search: ''
+      search: '',
+      teamIcon: []
     }
   },
 
   created () {
-    this.getData('http://api.football-data.org/v1/competitions/' + this.$route.params.competition + '/fixtures')
+    // e.g. http://api.football-data.org/v1/competitions/440/fixtures?timeFrame=n21
+    this.getData('http://api.football-data.org/v1/competitions/' + this.$route.params.competition + '/fixtures?timeFrame=n21')
   },
 
   computed: {
@@ -50,6 +52,13 @@ export default {
         console.log(response.data.fixtures)
       }).catch(error => {
         console.log(error)
+      })
+    },
+    // TODO: Map results from getIcon into a icon array. each result will be added to the array.
+    getIcon: function (value) {
+      Axios.get(value, config)
+      .then(response => {
+        this.teamIcon = response.data.crestUrl
       })
     }
   }

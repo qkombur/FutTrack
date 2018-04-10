@@ -1,10 +1,15 @@
-import Vue from 'vue'
-import FixtureCard from '@/components/FixtureCard'
+// import Vue from 'vue'
+import FixtureCard from '@/components/FixtureCard.vue'
 
-describe('FixtureCard.vue', () => {
-  it('should get json', () => {
-    const Constructor = Vue.extend(FixtureCard)
-    const vm = new Constructor().$mount()
-    expect(vm.$data).to.equal(vm.$data.search)
+describe('FixtureCard', () => {
+  it('sets the correct default data', () => {
+    const defaultData = FixtureCard.data()
+    expect(defaultData.formatedDate).to.equal('')
+    expect(defaultData.search).to.equal('')
+  })
+
+  it('should filter dates', () => {
+    const dateFilter = FixtureCard.filter('formatDate')
+    expect(dateFilter('2017-08-13T12:30:00Z').to.equal('7/13/2017'))
   })
 })
