@@ -21,6 +21,11 @@ export default {
     return {
       competitions: [
         {
+          id: 467,
+          caption: 'World Cup',
+          logo: require('../assets/worldcup.png')
+        },
+        {
           id: 445,
           caption: 'Premier League',
           logo: require('../assets/Premier_League_logo.png')
