@@ -1,7 +1,13 @@
 <template>
-  <div class="container">
+  <div class="flex-container container">
     <div class="searchbox-container"><input class="searchbox" type="text" v-model="search" placeholder="search box" /></div>
-    <FixtureCard v-bind:filteredFixtures="filteredFixtures"></FixtureCard>
+    <FixtureCard
+      v-for="(fixture, index) in filteredFixtures"
+      v-bind:key="+fixture"
+      v-bind:data-index="index"
+      v-bind:fixture="fixture"
+    >
+    </FixtureCard>
   </div>
 </template>
 
@@ -25,7 +31,8 @@ export default {
       fixtures: [],
       formatedDate: '',
       search: '',
-      teamIcon: []
+      teamIcon: [],
+      hidden: false
     }
   },
 
@@ -66,6 +73,11 @@ export default {
 </script>
 
 <style scoped>
+li {
+  list-style-type: none;
+  min-width: 100vw;
+  padding: 30px 15px 0 15px;
+}
 .container {
   overflow-x: hidden;
 }
@@ -88,6 +100,24 @@ export default {
 
 .searchbox::-webkit-input-placeholder{
   color: #6fffe9;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  align-items: center;
+}
+
+
+@media all and (min-width: 1000px){
+  .flex-container {
+    flex-direction: row;
+  }
+  li {
+    min-width: 300px;
+  }
+
 }
 
 </style>

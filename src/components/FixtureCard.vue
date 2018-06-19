@@ -1,37 +1,34 @@
 <template>
-  <div class="flex-container">
-      <li
-        v-for="(fixture, index) in filteredFixtures"
-        v-bind:key="+fixture"
-        v-bind:data-index="index"
-      >
-        <div v-if="fixture.result.goalsHomeTeam !== null" class="card">
-          <div class="left">
+  <div>
+    <div v-if="fixture.result.goalsHomeTeam !== null" class="card">
+      <div v-if="hidden" class="left">
+        <h2 class="teamName">{{ fixture.homeTeamName + ' - ' + fixture.result.goalsHomeTeam }}</h2>
+        <h2 class="versus">vs</h2>
+        <h2 class="teamName">{{ fixture.awayTeamName + ' - ' + fixture.result.goalsAwayTeam}}</h2>
+      </div>
+      <div v-else class="left">
+        <h2 class="teamName">{{ fixture.homeTeamName + ' - ' + "Spoiler"}}</h2>
+        <h2 class="versus">vs</h2>
+        <h2 class="teamName">{{ fixture.awayTeamName + ' - ' + "Spolier"}}</h2>
+      </div>
+      <div class="right">
+        <h2 class="date">{{ fixture.date | formatDate }}</h2>
+        <h2 class="date">{{ fixture.date | formatTime }}</h2>
+      </div>
+      <h3 @click="hidden = !hidden">Show Score?</h3>
+    </div>
 
-              <h2 class="teamName">{{ fixture.homeTeamName + ' - ' + fixture.result.goalsHomeTeam }}</h2>
-
-            <h2 class="versus">vs</h2>
-            <h2 class="teamName">{{ fixture.awayTeamName + ' - ' + fixture.result.goalsAwayTeam}}</h2>
-          </div>
-          <div class="right">
-            <h2 class="date">{{ fixture.date | formatDate }}</h2>
-            <h2 class="date">{{ fixture.date | formatTime }}</h2>
-          </div>
-        </div>
-
-        <div v-else class="card">
-          <div class="left">
-              <h2 class="teamName">{{ fixture.homeTeamName }}</h2>
-
-            <h2 class="versus">vs</h2>
-            <h2 class="teamName">{{ fixture.awayTeamName }}</h2>
-          </div>
-          <div class="right">
-            <h2 class="date">{{ fixture.date | formatDate }}</h2>
-            <h2 class="date">{{ fixture.date | formatTime }}</h2>
-          </div>
-        </div>
-      </li>
+    <div v-else class="card">
+      <div class="left">
+        <h2 class="teamName">{{ fixture.homeTeamName }}</h2>
+        <h2 class="versus">vs</h2>
+        <h2 class="teamName">{{ fixture.awayTeamName }}</h2>
+      </div>
+      <div class="right">
+        <h2 class="date">{{ fixture.date | formatDate }}</h2>
+        <h2 class="date">{{ fixture.date | formatTime }}</h2>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -48,8 +45,8 @@ export default {
   name: 'FixtureCard',
 
   props: {
-    filteredFixtures: {
-      type: Array,
+    fixture: {
+      type: Object,
       default: []
     }
   },
@@ -58,7 +55,8 @@ export default {
     return {
       formatedDate: '',
       search: '',
-      teamIcon: []
+      teamIcon: [],
+      hidden: false
     }
   },
   created () {
@@ -95,18 +93,12 @@ h2 {
   margin: 0;
 }
 
-li {
-  list-style-type: none;
-  min-width: 100vw;
-  padding: 30px 15px 0 15px;
-}
-
 .card {
   background-color: #1c2541;
   border-radius: 20px;
   text-align: left;
   padding: 30px;
-  margin: 0 auto;
+  margin: 30px 15px 0 15px;
   max-width: 100%;
 }
 
@@ -119,18 +111,9 @@ li {
   transform: translateY(30px);
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap:wrap;
-  align-items: center;
-}
-
 
 @media all and (min-width: 1000px){
-  .flex-container {
-    flex-direction: row;
-  }
+
   li {
     min-width: 300px;
   }
