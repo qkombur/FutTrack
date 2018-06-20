@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <h1>You look lost.</h1>
-      <h2>404</h2>
+      <h2>404.</h2>
   </div>
 </template>
 
