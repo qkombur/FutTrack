@@ -15,7 +15,7 @@
         <h2 class="date">{{ fixture.date | formatDate }}</h2>
         <h2 class="date">{{ fixture.date | formatTime }}</h2>
       </div>
-      <h3 @click="hidden = !hidden">Show Score?</h3>
+      <h3 class="spoiler" @click="hidden = !hidden">Show Score?</h3>
     </div>
 
     <div v-else class="card">
@@ -91,6 +91,10 @@ h2 {
   color: #6fffe9;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
+}
+
+.spoiler {
+  cursor: pointer;
 }
 
 .card {

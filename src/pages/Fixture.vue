@@ -31,8 +31,7 @@ export default {
       fixtures: [],
       formatedDate: '',
       search: '',
-      teamIcon: [],
-      hidden: false
+      teamIcon: []
     }
   },
 
