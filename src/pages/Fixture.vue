@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container container">
-    <div class="searchbox-container"><input class="searchbox" type="text" v-model="search" placeholder="search box" /></div>
+    <div class="container"><input class="searchbox" type="text" v-model="search" placeholder="search box" /></div>
     <FixtureCard
       v-for="(fixture, index) in filteredFixtures"
       v-bind:key="+fixture"
@@ -30,8 +30,7 @@ export default {
     return {
       fixtures: [],
       formatedDate: '',
-      search: '',
-      teamIcon: []
+      search: ''
     }
   },
 
@@ -60,13 +59,6 @@ export default {
         console.log(error)
       })
     }
-    // TODO: Map results from getIcon into a icon array. each result will be added to the array.
-    /* getIcon: function (value) {
-      Axios.get(value, config)
-      .then(response => {
-        this.teamIcon = response.data.crestUrl
-      })
-    } */
   }
 }
 </script>
@@ -79,6 +71,7 @@ li {
 }
 .container {
   overflow-x: hidden;
+  width: 100%;
 }
 .searchbox {
   background: #1a2139;

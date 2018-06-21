@@ -3,7 +3,7 @@
     <div class="welcome">
       <div class="wrapper">
         <h2 class="welcome-header">Welcome to Fut Fixtures</h2>
-        <h3>Your games in one place</h3>
+        <h3>Now spoiler free!</h3>
         <router-link class='btn' to='/competitions'>View Fixtures</router-link>
       </div>
     </div>
@@ -34,25 +34,6 @@ export default {
   name: 'main',
   components: {
     FixtureCard
-  },
-  data () {
-    return {
-      msg: 'This is a test'
-    }
-  },
-  created () {
-  },
-  filters: {
-    formatDate: function (value) {
-      if (!value) return ''
-      let date = new Date(value)
-      return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
-    },
-    formatTime: function (value) {
-      if (!value) return ''
-      let date = new Date(value)
-      return date.getHours() + ':' + date.getMinutes()
-    }
   }
 }
 </script>

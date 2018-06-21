@@ -1,17 +1,17 @@
 <template>
   <div>
     <div v-if="fixture.result.goalsHomeTeam !== null" class="card">
-      <div v-if="hidden" class="left">
+      <div v-if="hidden" >
         <h2 class="teamName">{{ fixture.homeTeamName + ' - ' + fixture.result.goalsHomeTeam }}</h2>
         <h2 class="versus">vs</h2>
         <h2 class="teamName">{{ fixture.awayTeamName + ' - ' + fixture.result.goalsAwayTeam}}</h2>
       </div>
-      <div v-else class="left">
+      <div v-else >
         <h2 class="teamName">{{ fixture.homeTeamName + ' - ' + "Spoiler"}}</h2>
         <h2 class="versus">vs</h2>
         <h2 class="teamName">{{ fixture.awayTeamName + ' - ' + "Spolier"}}</h2>
       </div>
-      <div class="right">
+      <div >
         <h2 class="date">{{ fixture.date | formatDate }}</h2>
         <h2 class="date">{{ fixture.date | formatTime }}</h2>
       </div>
@@ -19,12 +19,17 @@
     </div>
 
     <div v-else class="card">
-      <div class="left">
+      <div v-if="(fixture.homeTeamName || fixture.awayTeamName) == ''">
+        <h2 class="teamName">TBD</h2>
+        <h2 class="versus">vs</h2>
+        <h2 class="teamName">TBD</h2>
+      </div>
+      <div v-else >
         <h2 class="teamName">{{ fixture.homeTeamName }}</h2>
         <h2 class="versus">vs</h2>
         <h2 class="teamName">{{ fixture.awayTeamName }}</h2>
       </div>
-      <div class="right">
+      <div>
         <h2 class="date">{{ fixture.date | formatDate }}</h2>
         <h2 class="date">{{ fixture.date | formatTime }}</h2>
       </div>
@@ -33,14 +38,6 @@
 </template>
 
 <script>
-import Axios from 'axios'
-
-const config = {
-  headers: {
-    'X-Auth-Token': '651c36e10a3640f598f529d5a2868ec2'
-  }
-}
-
 export default {
   name: 'FixtureCard',
 
@@ -54,20 +51,10 @@ export default {
   data () {
     return {
       formatedDate: '',
-      search: '',
-      teamIcon: [],
       hidden: false
     }
   },
   created () {
-  },
-  methods: {
-    getIcon: function (value) {
-      Axios.get(value, config)
-      .then(response => {
-        this.teamIcon = response.data.crestUrl
-      })
-    }
   },
 
   filters: {
@@ -103,7 +90,7 @@ h2 {
   text-align: left;
   padding: 30px;
   margin: 30px 15px 0 15px;
-  max-width: 100%;
+  min-width: 80vw;
 }
 
 
@@ -118,8 +105,16 @@ h2 {
 
 @media all and (min-width: 1000px){
 
-  li {
-    min-width: 300px;
+  .card {
+    min-width: 20vw;
+  }
+
+}
+
+@media all and (min-width: 2000px){
+
+  .card {
+    min-width: 10vw;
   }
 
 }
